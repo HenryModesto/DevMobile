@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>teste.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+teste.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">import kotlin</span><span class="s1">.</span><span class="s0">random</span><span class="s1">.</span><span class="s0">Random</span>
+
+<span class="s2">fun </span><span class="s0">main</span><span class="s1">() {</span>
+   <span class="s3">// calcularPerdaDeVida(), verificarTriangulo(), classificarTriangulo(), jooKenPo(), adivinheONumero(),</span>
+   <span class="s3">// adivinhaNumeroLimitado, pa(), fibonacci(), vetorOrdenado(), fibonacciLimitado(), fibonacciParaLimitado(10)</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">calcularPerdaDeVida</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Quantos cigarros você fuma por dia:&quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">quantidadeCigarros </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toInt</span><span class="s1">()</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Por quantos anos você já fumou:&quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">anosFumando </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toInt</span><span class="s1">()</span>
+
+    <span class="s2">val </span><span class="s0">minutosPerdidosPorDia </span><span class="s1">= </span><span class="s0">quantidadeCigarros </span><span class="s1">* </span><span class="s5">10</span>
+    <span class="s2">val </span><span class="s0">horasPerdidasPorDia </span><span class="s1">= </span><span class="s0">minutosPerdidosPorDia </span><span class="s1">/ </span><span class="s5">60.0</span>
+    <span class="s2">val </span><span class="s0">diasPerdidosPorAno </span><span class="s1">= </span><span class="s0">horasPerdidasPorDia </span><span class="s1">/ </span><span class="s5">24</span>
+    <span class="s2">val </span><span class="s0">diasPerdidosTotal </span><span class="s1">= </span><span class="s0">diasPerdidosPorAno </span><span class="s1">* </span><span class="s0">anosFumando</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;O fumante perdeu aproximadamente %.2f dias de vida.&quot;</span><span class="s1">.</span><span class="s0">format</span><span class="s1">(</span><span class="s0">diasPerdidosTotal</span><span class="s1">))</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">verificarTriangulo</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Digite os três lados do triângulo:&quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">segmentoA </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toDouble</span><span class="s1">()</span>
+    <span class="s2">val </span><span class="s0">segmentoB </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toDouble</span><span class="s1">()</span>
+    <span class="s2">val </span><span class="s0">segmentoC </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toDouble</span><span class="s1">()</span>
+
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">segmentoA </span><span class="s1">&lt;= </span><span class="s5">0 </span><span class="s1">|| </span><span class="s0">segmentoB </span><span class="s1">&lt;= </span><span class="s5">0 </span><span class="s1">|| </span><span class="s0">segmentoC </span><span class="s1">&lt;= </span><span class="s5">0</span><span class="s1">) {</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Os lados do triângulo devem ser valores positivos.&quot;</span><span class="s1">)</span>
+        <span class="s2">return</span>
+    <span class="s1">}</span>
+
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">segmentoA </span><span class="s1">&lt; </span><span class="s0">segmentoB </span><span class="s1">+ </span><span class="s0">segmentoC </span><span class="s1">&amp;&amp; </span><span class="s0">segmentoB </span><span class="s1">&lt; </span><span class="s0">segmentoA </span><span class="s1">+ </span><span class="s0">segmentoC </span><span class="s1">&amp;&amp; </span><span class="s0">segmentoC </span><span class="s1">&lt; </span><span class="s0">segmentoA </span><span class="s1">+ </span><span class="s0">segmentoB</span><span class="s1">) {</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;É possível formar um triângulo com esses segmentos de reta.&quot;</span><span class="s1">)</span>
+    <span class="s1">} </span><span class="s2">else </span><span class="s1">{</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Não é possível formar um triângulo com esses segmentos de reta.&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">classificarTriangulo</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Digite os três lados do triângulo:&quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">ladoA </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toDouble</span><span class="s1">()</span>
+    <span class="s2">val </span><span class="s0">ladoB </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toDouble</span><span class="s1">()</span>
+    <span class="s2">val </span><span class="s0">ladoC </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toDouble</span><span class="s1">()</span>
+
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">ladoA </span><span class="s1">&lt; </span><span class="s0">ladoB </span><span class="s1">+ </span><span class="s0">ladoC </span><span class="s1">&amp;&amp; </span><span class="s0">ladoB </span><span class="s1">&lt; </span><span class="s0">ladoA </span><span class="s1">+ </span><span class="s0">ladoC </span><span class="s1">&amp;&amp; </span><span class="s0">ladoC </span><span class="s1">&lt; </span><span class="s0">ladoA </span><span class="s1">+ </span><span class="s0">ladoB</span><span class="s1">) {</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;É possível formar um triângulo com esses segmentos de reta.&quot;</span><span class="s1">)</span>
+        <span class="s2">when </span><span class="s1">{</span>
+            <span class="s0">ladoA </span><span class="s1">== </span><span class="s0">ladoB </span><span class="s1">&amp;&amp; </span><span class="s0">ladoB </span><span class="s1">== </span><span class="s0">ladoC </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;O triângulo é EQUILÁTERO.&quot;</span><span class="s1">)</span>
+            <span class="s0">ladoA </span><span class="s1">== </span><span class="s0">ladoB </span><span class="s1">|| </span><span class="s0">ladoB </span><span class="s1">== </span><span class="s0">ladoC </span><span class="s1">|| </span><span class="s0">ladoA </span><span class="s1">== </span><span class="s0">ladoC </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;O triângulo é ISÓSCELES.&quot;</span><span class="s1">)</span>
+            <span class="s2">else </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;O triângulo é ESCALENO.&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+    <span class="s1">} </span><span class="s2">else </span><span class="s1">{</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Não é possível formar um triângulo com esses segmentos de reta.&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">jooKenPo</span><span class="s1">() {</span>
+    <span class="s2">val </span><span class="s0">opcoes </span><span class="s1">= </span><span class="s0">arrayOf</span><span class="s1">(</span><span class="s4">&quot;Pedra&quot;</span><span class="s1">, </span><span class="s4">&quot;Papel&quot;</span><span class="s1">, </span><span class="s4">&quot;Tesoura&quot;</span><span class="s1">)</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Bem-vindo ao jogo de JoKenPo!</span><span class="s2">\n</span><span class="s4">Escolha sua jogada:&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;1. Pedra&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;2. Papel&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;3. Tesoura&quot;</span><span class="s1">)</span>
+
+    <span class="s2">val </span><span class="s0">escolhaJogador </span><span class="s1">= </span><span class="s0">runCatching </span><span class="s1">{ </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toInt</span><span class="s1">() }.</span><span class="s0">getOrElse </span><span class="s1">{</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Entrada inválida. Digite um número de 1 a 3.&quot;</span><span class="s1">)</span>
+        <span class="s2">return</span>
+    <span class="s1">}</span>
+
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">escolhaJogador </span><span class="s2">!in </span><span class="s5">1</span><span class="s1">..</span><span class="s5">3</span><span class="s1">) {</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Opção inválida. Tente novamente.&quot;</span><span class="s1">)</span>
+        <span class="s2">return</span>
+    <span class="s1">}</span>
+
+    <span class="s2">val </span><span class="s0">escolhaComputador </span><span class="s1">= </span><span class="s0">Random</span><span class="s1">.</span><span class="s0">nextInt</span><span class="s1">(</span><span class="s5">1</span><span class="s1">, </span><span class="s5">4</span><span class="s1">)</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">Você escolheu: </span><span class="s2">${</span><span class="s0">opcoes</span><span class="s1">[</span><span class="s0">escolhaJogador </span><span class="s1">- </span><span class="s5">1</span><span class="s1">]</span><span class="s2">}</span><span class="s4">&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;O computador escolheu: </span><span class="s2">${</span><span class="s0">opcoes</span><span class="s1">[</span><span class="s0">escolhaComputador </span><span class="s1">- </span><span class="s5">1</span><span class="s1">]</span><span class="s2">}</span><span class="s4">&quot;</span><span class="s1">)</span>
+
+    <span class="s2">when </span><span class="s1">{</span>
+        <span class="s0">escolhaJogador </span><span class="s1">== </span><span class="s0">escolhaComputador </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Empate!&quot;</span><span class="s1">)</span>
+        <span class="s1">(</span><span class="s0">escolhaJogador </span><span class="s1">== </span><span class="s5">1 </span><span class="s1">&amp;&amp; </span><span class="s0">escolhaComputador </span><span class="s1">== </span><span class="s5">3</span><span class="s1">) ||</span>
+                <span class="s1">(</span><span class="s0">escolhaJogador </span><span class="s1">== </span><span class="s5">2 </span><span class="s1">&amp;&amp; </span><span class="s0">escolhaComputador </span><span class="s1">== </span><span class="s5">1</span><span class="s1">) ||</span>
+                <span class="s1">(</span><span class="s0">escolhaJogador </span><span class="s1">== </span><span class="s5">3 </span><span class="s1">&amp;&amp; </span><span class="s0">escolhaComputador </span><span class="s1">== </span><span class="s5">2</span><span class="s1">) -&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Você ganhou!&quot;</span><span class="s1">)</span>
+        <span class="s2">else </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;Você perdeu!&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+
+<span class="s2">fun </span><span class="s0">adivinheONumero</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🎉 Bem-vindo ao jogo de adivinhação!&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔢 Tente adivinhar o número sorteado entre 1 e 5.&quot;</span><span class="s1">)</span>
+
+    <span class="s2">val </span><span class="s0">numeroSorteado </span><span class="s1">= </span><span class="s0">Random</span><span class="s1">.</span><span class="s0">nextInt</span><span class="s1">(</span><span class="s5">1</span><span class="s1">, </span><span class="s5">6</span><span class="s1">)</span>
+    <span class="s2">var </span><span class="s0">tentativas </span><span class="s1">= </span><span class="s5">0</span>
+
+    <span class="s2">do </span><span class="s1">{</span>
+        <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;📝 Digite seu palpite (1 a 5): &quot;</span><span class="s1">)</span>
+        <span class="s2">val </span><span class="s0">entrada </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">()</span>
+
+        <span class="s3">// Verifica se a entrada é um número válido</span>
+        <span class="s2">val </span><span class="s0">numeroJogador </span><span class="s1">= </span><span class="s0">entrada</span><span class="s1">.</span><span class="s0">toIntOrNull</span><span class="s1">()</span>
+
+        <span class="s2">if </span><span class="s1">(</span><span class="s0">numeroJogador </span><span class="s1">== </span><span class="s2">null </span><span class="s1">|| </span><span class="s0">numeroJogador </span><span class="s2">!in </span><span class="s5">1</span><span class="s1">..</span><span class="s5">5</span><span class="s1">) {</span>
+            <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;❌ Entrada inválida! Digite um número entre 1 e 5.&quot;</span><span class="s1">)</span>
+            <span class="s2">continue</span>
+        <span class="s1">}</span>
+
+        <span class="s0">tentativas</span><span class="s1">++</span>
+
+        <span class="s2">when </span><span class="s1">{</span>
+            <span class="s0">numeroJogador </span><span class="s1">&lt; </span><span class="s0">numeroSorteado </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔼 O número sorteado é maior. Tente novamente!&quot;</span><span class="s1">)</span>
+            <span class="s0">numeroJogador </span><span class="s1">&gt; </span><span class="s0">numeroSorteado </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔽 O número sorteado é menor. Tente novamente!&quot;</span><span class="s1">)</span>
+            <span class="s2">else </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🎉 Parabéns! Você acertou o número sorteado (</span><span class="s2">$</span><span class="s0">numeroSorteado</span><span class="s4">) em </span><span class="s2">$</span><span class="s0">tentativas </span><span class="s4">tentativas.&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+
+    <span class="s1">} </span><span class="s2">while </span><span class="s1">(</span><span class="s0">numeroJogador </span><span class="s1">!= </span><span class="s0">numeroSorteado</span><span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">adivinhaNumeroLimitado</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🎉 Bem-vindo ao jogo de adivinhação!&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔢 Tente adivinhar o número sorteado entre 1 e 10.&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🎯 Você tem 4 tentativas.&quot;</span><span class="s1">)</span>
+
+    <span class="s2">val </span><span class="s0">numeroSorteado </span><span class="s1">= </span><span class="s0">Random</span><span class="s1">.</span><span class="s0">nextInt</span><span class="s1">(</span><span class="s5">1</span><span class="s1">, </span><span class="s5">11</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">maxTentativas </span><span class="s1">= </span><span class="s5">4</span>
+    <span class="s2">var </span><span class="s0">tentativas </span><span class="s1">= </span><span class="s5">0</span>
+
+    <span class="s2">while </span><span class="s1">(</span><span class="s0">tentativas </span><span class="s1">&lt; </span><span class="s0">maxTentativas</span><span class="s1">) {</span>
+        <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;📝 Tentativa </span><span class="s2">${</span><span class="s0">tentativas </span><span class="s1">+ </span><span class="s5">1</span><span class="s2">} </span><span class="s4">de </span><span class="s2">$</span><span class="s0">maxTentativas</span><span class="s4">. Digite seu palpite (1 a 10): &quot;</span><span class="s1">)</span>
+        <span class="s2">val </span><span class="s0">entrada </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">()</span>
+
+        <span class="s2">val </span><span class="s0">numeroJogador </span><span class="s1">= </span><span class="s0">entrada</span><span class="s1">.</span><span class="s0">toIntOrNull</span><span class="s1">()</span>
+
+        <span class="s2">if </span><span class="s1">(</span><span class="s0">numeroJogador </span><span class="s1">== </span><span class="s2">null </span><span class="s1">|| </span><span class="s0">numeroJogador </span><span class="s2">!in </span><span class="s5">1</span><span class="s1">..</span><span class="s5">10</span><span class="s1">) {</span>
+            <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;❌ Número inválido! Digite um número entre 1 e 10.&quot;</span><span class="s1">)</span>
+            <span class="s2">continue</span>
+        <span class="s1">}</span>
+
+        <span class="s0">tentativas</span><span class="s1">++</span>
+
+        <span class="s2">when </span><span class="s1">{</span>
+            <span class="s0">numeroJogador </span><span class="s1">== </span><span class="s0">numeroSorteado </span><span class="s1">-&gt; {</span>
+                <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🎉 Parabéns! Você acertou o número sorteado (</span><span class="s2">$</span><span class="s0">numeroSorteado</span><span class="s4">) em </span><span class="s2">$</span><span class="s0">tentativas </span><span class="s4">tentativas. 🏆&quot;</span><span class="s1">)</span>
+                <span class="s2">return</span>
+            <span class="s1">}</span>
+            <span class="s0">numeroJogador </span><span class="s1">&lt; </span><span class="s0">numeroSorteado </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔼 O número sorteado é maior. Tente novamente!&quot;</span><span class="s1">)</span>
+            <span class="s2">else </span><span class="s1">-&gt; </span><span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔽 O número sorteado é menor. Tente novamente!&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;❌ Você não acertou! O número sorteado era </span><span class="s2">$</span><span class="s0">numeroSorteado</span><span class="s4">. 😢&quot;</span><span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">pa</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;📏 Cálculo dos 10 primeiros termos da Progressão Aritmética (PA)&quot;</span><span class="s1">)</span>
+
+    <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;📝 Digite o primeiro termo da PA: &quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">primeiroTermo </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toInt</span><span class="s1">()</span>
+    <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;📈 Digite a razão da PA: &quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">razao </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toInt</span><span class="s1">()</span>
+
+    <span class="s2">var </span><span class="s0">termoAtual </span><span class="s1">= </span><span class="s0">primeiroTermo</span>
+    <span class="s2">var </span><span class="s0">soma </span><span class="s1">= </span><span class="s5">0</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">📊 Os 10 primeiros termos da PA são:&quot;</span><span class="s1">)</span>
+    <span class="s2">for </span><span class="s1">(</span><span class="s0">i </span><span class="s2">in </span><span class="s5">1</span><span class="s1">..</span><span class="s5">10</span><span class="s1">) {</span>
+        <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">$</span><span class="s0">termoAtual </span><span class="s4">➝ &quot;</span><span class="s1">)</span>
+        <span class="s0">soma </span><span class="s1">+= </span><span class="s0">termoAtual</span>
+        <span class="s0">termoAtual </span><span class="s1">+= </span><span class="s0">razao</span>
+    <span class="s1">}</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;FIM&quot;</span><span class="s1">)</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">🧮 A soma dos 10 primeiros termos da PA é: </span><span class="s2">$</span><span class="s0">soma</span><span class="s4">&quot;</span><span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">fibonacci</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🐚 Os 10 primeiros elementos da sequência de Fibonacci são:&quot;</span><span class="s1">)</span>
+
+    <span class="s2">var </span><span class="s0">a </span><span class="s1">= </span><span class="s5">1</span>
+    <span class="s2">var </span><span class="s0">b </span><span class="s1">= </span><span class="s5">1</span>
+
+    <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;✨ </span><span class="s2">$</span><span class="s0">a </span><span class="s4">➝ </span><span class="s2">$</span><span class="s0">b </span><span class="s4">&quot;</span><span class="s1">)</span>
+
+    <span class="s2">for </span><span class="s1">(</span><span class="s0">i </span><span class="s2">in </span><span class="s5">3</span><span class="s1">..</span><span class="s5">10</span><span class="s1">) {</span>
+        <span class="s2">val </span><span class="s0">c </span><span class="s1">= </span><span class="s0">a </span><span class="s1">+ </span><span class="s0">b</span>
+        <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;➝ </span><span class="s2">$</span><span class="s0">c </span><span class="s4">&quot;</span><span class="s1">)</span>
+        <span class="s0">a </span><span class="s1">= </span><span class="s0">b</span>
+        <span class="s0">b </span><span class="s1">= </span><span class="s0">c</span>
+    <span class="s1">}</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;➝ FIM&quot;</span><span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">vetorOrdenado</span><span class="s1">() {</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;🔢 Gerando um vetor de 20 números aleatórios...&quot;</span><span class="s1">)</span>
+
+    <span class="s2">val </span><span class="s0">vetor </span><span class="s1">= </span><span class="s0">IntArray</span><span class="s1">(</span><span class="s5">20</span><span class="s1">)</span>
+
+    <span class="s2">for </span><span class="s1">(</span><span class="s0">i </span><span class="s2">in </span><span class="s0">vetor</span><span class="s1">.</span><span class="s0">indices</span><span class="s1">) {</span>
+        <span class="s0">vetor</span><span class="s1">[</span><span class="s0">i</span><span class="s1">] = </span><span class="s0">Random</span><span class="s1">.</span><span class="s0">nextInt</span><span class="s1">(</span><span class="s5">0</span><span class="s1">, </span><span class="s5">100</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">🎲 Números aleatórios gerados:&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s0">vetor</span><span class="s1">.</span><span class="s0">joinToString</span><span class="s1">(</span><span class="s4">&quot; ➝ &quot;</span><span class="s1">))</span>
+
+    <span class="s0">vetor</span><span class="s1">.</span><span class="s0">sort</span><span class="s1">()</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">📈 Números ordenados em ordem crescente:&quot;</span><span class="s1">)</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s0">vetor</span><span class="s1">.</span><span class="s0">joinToString</span><span class="s1">(</span><span class="s4">&quot; ➝ &quot;</span><span class="s1">))</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">fibonacciLimitado</span><span class="s1">() {</span>
+    <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;📏 Digite a quantidade de termos da sequência de Fibonacci que deseja ver: &quot;</span><span class="s1">)</span>
+    <span class="s2">val </span><span class="s0">termos </span><span class="s1">= </span><span class="s0">readln</span><span class="s1">().</span><span class="s0">toInt</span><span class="s1">()</span>
+
+    <span class="s0">fibonacciParaLimitado</span><span class="s1">(</span><span class="s0">termos</span><span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s2">fun </span><span class="s0">fibonacciParaLimitado</span><span class="s1">(</span><span class="s0">quantidade: Int</span><span class="s1">) {</span>
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">quantidade </span><span class="s1">&lt;= </span><span class="s5">0</span><span class="s1">) {</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;⚠️ Quantidade inválida! Insira um número maior que zero.&quot;</span><span class="s1">)</span>
+        <span class="s2">return</span>
+    <span class="s1">}</span>
+
+    <span class="s2">var </span><span class="s0">a </span><span class="s1">= </span><span class="s5">1</span>
+    <span class="s2">var </span><span class="s0">b </span><span class="s1">= </span><span class="s5">1</span>
+
+    <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">🌀 Sequência de Fibonacci:</span><span class="s2">\n</span><span class="s4">&quot;</span><span class="s1">)</span>
+
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">quantidade </span><span class="s1">&gt;= </span><span class="s5">1</span><span class="s1">) </span><span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;✨ </span><span class="s2">$</span><span class="s0">a </span><span class="s4">➝ &quot;</span><span class="s1">)</span>
+    <span class="s2">if </span><span class="s1">(</span><span class="s0">quantidade </span><span class="s1">&gt;= </span><span class="s5">2</span><span class="s1">) </span><span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">$</span><span class="s0">b </span><span class="s4">➝ &quot;</span><span class="s1">)</span>
+
+    <span class="s2">for </span><span class="s1">(</span><span class="s0">i </span><span class="s2">in </span><span class="s5">3</span><span class="s1">..</span><span class="s0">quantidade</span><span class="s1">) {</span>
+        <span class="s2">val </span><span class="s0">c </span><span class="s1">= </span><span class="s0">a </span><span class="s1">+ </span><span class="s0">b</span>
+        <span class="s0">print</span><span class="s1">(</span><span class="s4">&quot;</span><span class="s2">$</span><span class="s0">c </span><span class="s4">➝ &quot;</span><span class="s1">)</span>
+        <span class="s0">a </span><span class="s1">= </span><span class="s0">b</span>
+        <span class="s0">b </span><span class="s1">= </span><span class="s0">c</span>
+    <span class="s1">}</span>
+
+    <span class="s0">println</span><span class="s1">(</span><span class="s4">&quot;FIM&quot;</span><span class="s1">)</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
